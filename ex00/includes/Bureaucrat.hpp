@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:04:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/24 16:58:48 by yichan           ###   ########.fr       */
+/*   Updated: 2023/08/30 21:04:11 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 # include <iostream>
 # include <string>
 # include "Color.hpp"
-# include "Grade.hpp"
 
 class Bureaucrat
 {
 	private:
 		const std::string	_name;
-		Grade				_grade;
+		int					_grade;
 	public:
 		Bureaucrat(void);
 		Bureaucrat(std::string name);
@@ -31,8 +30,21 @@ class Bureaucrat
 		
 		// GradeTooHighException();
 		//getter
-		const std::string	getName(void);
-		constGrade			getGrade(void);
+		const std::string	getName(void) const;
+		int					getGrade(void) const;
+
+		void				incrementGrade(void);
+		void				decrementGrade(void);
+		void				incrementGrade(int);
+		void				decrementGrade(int);
+
+		class GradeTooHighException: public std::exception {
+			virtual const char* what() const throw();
+		};
+
+		class GradeTooLowException: public std::exception {
+			virtual const char* what() const throw();
+		};
 
 		//operator overload//
 		Bureaucrat &operator = (const Bureaucrat &other);
