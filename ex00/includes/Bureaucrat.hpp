@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:04:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/30 21:04:11 by yichan           ###   ########.fr       */
+/*   Updated: 2023/08/30 23:37:22 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+// # include <exception>
 # include "Color.hpp"
 
 class Bureaucrat
@@ -24,7 +25,7 @@ class Bureaucrat
 		int					_grade;
 	public:
 		Bureaucrat(void);
-		Bureaucrat(std::string name);
+		Bureaucrat(const std::string &name, int grade);
 		Bureaucrat(const Bureaucrat &other);
 		~Bureaucrat(void);
 		
@@ -38,12 +39,17 @@ class Bureaucrat
 		void				incrementGrade(int);
 		void				decrementGrade(int);
 
+		static int const	highestGrade = 1;
+		static int const	lowestGrade = 150;
+
 		class GradeTooHighException: public std::exception {
-			virtual const char* what() const throw();
+			public:
+				virtual const char* what() const throw();
 		};
 
 		class GradeTooLowException: public std::exception {
-			virtual const char* what() const throw();
+			public:
+				virtual const char* what() const throw();
 		};
 
 		//operator overload//
@@ -54,36 +60,3 @@ class Bureaucrat
 std::ostream &operator << (std::ostream &os , const Bureaucrat &other);
 
 #endif
-
-// #ifndef BUREAUCRAT_HPP
-// # define BUREAUCRAT_HPP
-
-// # include "Grade.hpp"
-
-// class Bureaucrat
-// {
-// 	private:
-// 		const std::string	name;
-// 		Grade				grade;
-
-// 	public:
-// 		/* Constructor && destructor */
-// 		Bureaucrat(const std::string &name, const int grade);
-// 		Bureaucrat(const Bureaucrat &ref);
-// 		~Bureaucrat(void);
-
-// 		/* OperatorOverload */
-// 		Bureaucrat	&operator=(const Bureaucrat &ref);
-
-// 		/* Getters */
-// 		const std::string	&getName(void) const;
-// 		const Grade			&getGrade(void) const;
-
-// 		/* MemberFunctions: Grade */
-// 		void	promote(const unsigned int grade);
-// 		void	demote(const unsigned int grade);
-// };
-
-// std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &bureaucrat);
-
-// #endif
