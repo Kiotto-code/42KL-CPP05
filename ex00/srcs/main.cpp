@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:28:10 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/31 00:03:07 by yichan           ###   ########.fr       */
+/*   Updated: 2023/08/31 14:42:40 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,12 @@ int main(void)
 	}
 	{
 		Bureaucrat batman("batman", 100);
-		Bureaucrat superman("superman", 100);
+		Bureaucrat superman("superman", 10);
+
+		std::cout << "Superman show grade : " << superman.getGrade() << std::endl;
+		superman = batman;
+		std::cout << "Superman show grade : " << superman.getGrade() << std::endl;
+		
 		batman.decrementGrade(50);
 		superman.incrementGrade(50);
 

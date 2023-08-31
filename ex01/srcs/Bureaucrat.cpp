@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 00:20:58 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/31 15:04:12 by yichan           ###   ########.fr       */
+/*   Updated: 2023/08/31 15:53:08 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,20 @@ void	Bureaucrat::decrementGrade(int n)
 	}
 }
 
+void	Bureaucrat::signForm(Form & document) const
+{
+	try
+	{
+		document.beSigned(*this);
+		std::cout << GREEN << *this << " signed " << document << RESET << std::endl;
+	}
+	catch (std::exception const & e)
+	{
+		std::cout << RED << *this << " couldn't sign " << document << " because: "
+			<< e.what() << RESET << std::endl;
+	}
+	
+}
 
 
 
