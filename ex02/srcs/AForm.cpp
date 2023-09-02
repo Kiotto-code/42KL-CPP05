@@ -62,12 +62,12 @@ void AForm::beSigned(const Bureaucrat& bureaucrat)
 	return ;
 }
 
-void	AForm::checkExecute(Bureaucrat const &bureaucrat) const;
+void	AForm::checkExecute(Bureaucrat const &bureaucrat) const
 {
-	if (executor.getGrade() > gradeToExecute)
-		throw GradeTooLowException("Bureaucrat is not authorized to execute the form");
-	if (!this->_signed)
-		throw InvalidFormException("AForm ot signed cannot be executed");
+	if (bureaucrat.getGrade() > m_executeGrade)
+		throw GradeTooLowException();
+	if (!this->m_signState)
+		throw InvalidFormException("AForm of signed cannot be executed");
 }
 
 const char* AForm::GradeTooHighException::what() const throw()
