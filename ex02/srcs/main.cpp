@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 23:37:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/03 23:40:52 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/04 01:00:43 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 	Bureaucrat		Odin("Odin", 1);
 	Bureaucrat		Thor("Thor", 40);
 	Bureaucrat		Loki("Loki", 150);
-	Form			*form = NULL;
+	AForm			*form = NULL;
 
 	srand(time(NULL));
 	std::cout << "Let's execute an unsigned presidential pardon form" << std::endl;
@@ -86,6 +86,6 @@ int main()
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-
+	system("leaks -q a.out");
 	return 0;
 }

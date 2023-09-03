@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:04:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/03 23:47:32 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/04 00:57:51 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "Color.hpp"
 # include "AForm.hpp"
 
-class Form;
+class AForm;
 class Bureaucrat
 {
 	private:
@@ -41,7 +41,8 @@ class Bureaucrat
 		void				incrementGrade(int);
 		void				decrementGrade(int);
 
-		void				signForm(Form &document) const;
+		void				signForm(AForm &document) const;
+		void				executeForm(AForm &document) const;
 
 		static int const	highestGrade = 1;
 		static int const	lowestGrade = 150;

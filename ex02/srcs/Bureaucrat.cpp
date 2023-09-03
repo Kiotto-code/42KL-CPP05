@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 00:20:58 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/31 15:53:08 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/04 01:01:00 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	Bureaucrat::decrementGrade(int n)
 	}
 }
 
-void	Bureaucrat::signForm(Form & document) const
+void	Bureaucrat::signForm(AForm & document) const
 {
 	try
 	{
@@ -125,6 +125,20 @@ void	Bureaucrat::signForm(Form & document) const
 	
 }
 
+void	Bureaucrat::executeForm(AForm & document) const
+{
+	try
+	{
+		document.execute(*this);
+		std::cout << GREEN << *this << " executed " << document << RESET << std::endl;
+	}
+	catch (std::exception const & e)
+	{
+		std::cout << RED << *this << " couldn't execute " << document << " because: "
+			<< e.what() << RESET << std::endl;
+	}
+	return ;
+}
 
 
 std::ostream &operator << (std::ostream &os , const Bureaucrat &other)
