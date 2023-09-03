@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 19:04:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/31 15:55:51 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/03 23:47:32 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 // # include <exception>
 # include "Color.hpp"
-# include "Form.hpp"
+# include "AForm.hpp"
 
 class Form;
 class Bureaucrat

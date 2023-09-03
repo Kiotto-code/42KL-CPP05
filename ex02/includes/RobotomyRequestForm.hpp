@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:33:14 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/31 17:33:19 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/03 22:42:22 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ class RobotomyRequestForm : public AForm
 
 		std::string const &	getTarget(void) const;
 
-		void	beExecuted(void) const;
-
 		static int const	gradeToSign = 72;
 		static int const	gradeToExecute = 45;
+		void	execute(const Bureaucrat &executor) const;
 
 	private:
 		std::string	_target;

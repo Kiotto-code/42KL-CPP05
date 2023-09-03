@@ -67,7 +67,7 @@ void	AForm::checkExecute(Bureaucrat const &bureaucrat) const
 	if (bureaucrat.getGrade() > m_executeGrade)
 		throw GradeTooLowException();
 	if (!this->m_signState)
-		throw InvalidFormException("AForm of signed cannot be executed");
+		throw InvalidFormException();
 }
 
 const char* AForm::GradeTooHighException::what() const throw()
@@ -83,6 +83,10 @@ const char* AForm::GradeTooLowException::what() const throw()
 const char* AForm::AlreadySignedException::what() const throw()
 {
 	return "Grade Signed\n";
+}
+const char* AForm::InvalidFormException::what() const throw()
+{
+	return "This form haven't signed and cannot be executed \n";
 }
 
 std::ostream &operator<< (std::ostream &os, const AForm &doc)

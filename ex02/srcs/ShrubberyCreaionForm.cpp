@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 23:35:07 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/03 02:18:52 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/03 22:14:58 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ const std::string&		ShrubberyCreationForm::getTarget(void) const
 {
 	return (this->_target);
 };
+
+ShrubberyCreationForm	&ShrubberyCreationForm::operator = (ShrubberyCreationForm const &src)
+{
+	AForm::operator = (src);
+	this->_target = src._target;
+	return (*this);
+}
 
 void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {

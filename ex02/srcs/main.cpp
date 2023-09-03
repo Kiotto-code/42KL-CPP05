@@ -1,34 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/03 23:37:05 by yichan            #+#    #+#             */
+/*   Updated: 2023/09/03 23:40:52 by yichan           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
-#include <iostream>
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include <ctime>
 
 int main()
 {
+	Bureaucrat		Odin("Odin", 1);
+	Bureaucrat		Thor("Thor", 40);
+	Bureaucrat		Loki("Loki", 150);
+	Form			*form = NULL;
+
+	srand(time(NULL));
+	std::cout << "Let's execute an unsigned presidential pardon form" << std::endl;
 	try
 	{
-		Form a("a", 160, 140);
+		form = new PresidentialPardonForm("28Z");
+		form->execute(Odin);
+		delete form;
+		form = NULL;
 	}
-	catch (const std::exception& e)
+	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
+	std::cout << "\nLet's sign and execute a presidential pardon form" << std::endl;
 	try
 	{
-		Form b("b", 140, 0);
+		form = new PresidentialPardonForm("28A");
+		form->beSigned(Odin);
+		form->execute(Odin);
+		delete form;
+		form = NULL;
 	}
-	catch (const std::exception& e)
+	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	Form form("Treaty", 50, 10);
-	Bureaucrat alex("Kamala Harris", 60);
-	Bureaucrat bob("Joe", 5);
+	std::cout << "\nLet's sign and execute robotomy request form with different people" << std::endl;
+	try
+	{
+		form = new RobotomyRequestForm("28B");
+		Odin.signForm(*form);
+		std::cout << std::endl;
+		Thor.executeForm(*form);
+		Thor.executeForm(*form);
+		Thor.executeForm(*form);
+		Thor.executeForm(*form);
+		Thor.executeForm(*form);
+		Thor.executeForm(*form);
+		Thor.executeForm(*form);
+		delete form;
+		form = NULL;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
 
-	alex.signForm(form);
-	std::cout << form << std::endl;
-	
-	bob.signForm(form);
-	std::cout << form << std::endl;
-	bob.signForm(form);
+	std::cout << "\nLet's execute shrubbery creation form with unauthorized bureaucrat" << std::endl;
+	try
+	{
+		form = new ShrubberyCreationForm("28C");
+		Odin.signForm(*form);
+		Thor.executeForm(*form);
+		Loki.executeForm(*form);
+		delete form;
+		form = NULL;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+
+	return 0;
 }
