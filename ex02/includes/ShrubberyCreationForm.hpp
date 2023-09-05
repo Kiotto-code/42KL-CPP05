@@ -6,12 +6,12 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:33:23 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/03 21:45:52 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/05 17:26:30 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERY_CREATION_FORM_CLASS_H
-# define SHRUBBERY_CREATION_FORM_CLASS_H
+#ifndef SHRUBBERY_CREATION_FORM_HPP
+# define SHRUBBERY_CREATION_FORM_HPP
 
 # include "AForm.hpp"
 

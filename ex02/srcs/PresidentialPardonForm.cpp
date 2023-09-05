@@ -6,24 +6,29 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 23:35:07 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/04 01:31:12 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/05 17:17:24 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", gradeToSign, gradeToExecute), _target("")
+PresidentialPardonForm::PresidentialPardonForm(void) : AForm("PresidentialPardonForm", PresidentialPardonForm::gradeToSign, PresidentialPardonForm::gradeToExecute), _target("")
 {
 	std::cout << "[PresidentialPardonForm] default constructor was being called " << std::endl;
 }
 
+PresidentialPardonForm::~PresidentialPardonForm(void) 
+{
+	std::cout << "[PresidentialPardonForm] destructor was being called " << std::endl;
+}
+
 PresidentialPardonForm::PresidentialPardonForm(const std::string& target) 
-	: AForm("PresidentialPardonForm", gradeToSign, gradeToExecute), _target(target) {
+	: AForm("PresidentialPardonForm", PresidentialPardonForm::gradeToSign, PresidentialPardonForm::gradeToExecute), _target(target) {
 	std::cout << "[PresidentialPardonForm] default constructor w string was being called " << std::endl;
 	}
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src) 
-	: AForm("PresidentialPardonForm", gradeToSign, gradeToExecute), _target(src.getTarget()) {
+	: AForm("PresidentialPardonForm", PresidentialPardonForm::gradeToSign, PresidentialPardonForm::gradeToExecute), _target(src.getTarget()) {
 	std::cout << "[PresidentialPardonForm] copy constructor was being called " << std::endl;
 	}
 
@@ -34,7 +39,7 @@ const std::string&		PresidentialPardonForm::getTarget(void) const
 
 PresidentialPardonForm	&PresidentialPardonForm::operator = (const PresidentialPardonForm &src)
 {
-	AForm::operator=(src);
+	// AForm::operator=(src);
 	this->_target = src._target;
 	std::cout << "[PresidentialPardonForm] assignment operator was being called" << std::endl;
 	return (*this);

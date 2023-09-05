@@ -6,24 +6,29 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 23:35:07 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/03 22:14:58 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/05 17:17:52 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", gradeToSign, gradeToExecute), _target("")
+ShrubberyCreationForm::ShrubberyCreationForm(void) : AForm("ShrubberyCreationForm", ShrubberyCreationForm::gradeToSign, ShrubberyCreationForm::gradeToExecute), _target("")
 {
 	std::cout << "[ShrubberyCreationForm] default constructor was being called " << std::endl;
 }
 
+ShrubberyCreationForm::~ShrubberyCreationForm(void) 
+{
+	std::cout << "[ShrubberyCreationForm] destructor was being called " << std::endl;
+}
+
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) 
-	: AForm("ShrubberyCreationForm", gradeToSign, gradeToExecute), _target(target) {
+	: AForm("ShrubberyCreationForm", ShrubberyCreationForm::gradeToSign, ShrubberyCreationForm::gradeToExecute), _target(target) {
 	std::cout << "[ShrubberyCreationForm] default constructor w string was being called " << std::endl;
 	}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& src) 
-	: AForm("ShrubberyCreationForm", gradeToSign, gradeToExecute), _target(src.getTarget()) {
+	: AForm("ShrubberyCreationForm", ShrubberyCreationForm::gradeToSign, ShrubberyCreationForm::gradeToExecute), _target(src.getTarget()) {
 	std::cout << "[ShrubberyCreationForm] copy constructor was being called " << std::endl;
 	}
 
@@ -34,7 +39,7 @@ const std::string&		ShrubberyCreationForm::getTarget(void) const
 
 ShrubberyCreationForm	&ShrubberyCreationForm::operator = (ShrubberyCreationForm const &src)
 {
-	AForm::operator = (src);
+	// AForm::operator = (src);
 	this->_target = src._target;
 	return (*this);
 }

@@ -6,12 +6,12 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:33:03 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/04 01:06:59 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/05 17:26:24 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIAL_PARDON_FORM_CLASS_H
-# define PRESIDENTIAL_PARDON_FORM_CLASS_H
+#ifndef PRESIDENTIAL_PARDON_FORM_HPP
+# define PRESIDENTIAL_PARDON_FORM_HPP
 
 # include "AForm.hpp"
 

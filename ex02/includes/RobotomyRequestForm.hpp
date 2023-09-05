@@ -6,12 +6,12 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 17:33:14 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/03 22:42:22 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/05 17:26:27 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMY_REQUEST_FORM_CLASS_H
-# define ROBOTOMY_REQUEST_FORM_CLASS_H
+#ifndef ROBOTOMY_REQUEST_FORM_HPP
+# define ROBOTOMY_REQUEST_FORM_HPP
 
 # include "AForm.hpp"
 

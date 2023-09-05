@@ -1,9 +1,10 @@
-#ifndef AForm_HPP
-# define AForm_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <iostream>
-#include <iomanip>
+// #include <iomanip>
 #include <fstream>
+// #include <cstdlib>
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -20,7 +21,7 @@ class	AForm
 		static int const	lowestGrade = 150;
 
 		AForm(void);
-		AForm(const std::string &name, const int sign_grade, const int &execute_grade);
+		AForm(const std::string &name, const int sign_grade, const int execute_grade);
 		AForm(const AForm &other);
 		virtual ~AForm(void);
 
@@ -38,11 +39,11 @@ class	AForm
 
 		class GradeTooHighException: public std::exception{
 			public:
-				virtual const char* what() const throw();
+				virtual const char* what(void) const throw();
 		};
 		class GradeTooLowException: public std::exception{
 			public:
-				virtual const char* what() const throw();
+				virtual const char* what(void) const throw();
 		};
 		class AlreadySignedException : public std::exception {
 			public:

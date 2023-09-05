@@ -5,7 +5,7 @@ AForm::AForm( void ) : m_name("Blank"), m_signState(false), m_signGrade(150), m_
 	std::cout << "[AForm] constructor was being called" << std::endl;
 };
 
-AForm::AForm (const std::string &name, const int sign_grade, const int &execute_grade)
+AForm::AForm (const std::string &name, const int sign_grade, const int execute_grade)
 : m_name(name), m_signState(false), m_signGrade(sign_grade), m_executeGrade(execute_grade)
 {
 	std::cout << "[AForm] constructor with data was being called" << std::endl;
