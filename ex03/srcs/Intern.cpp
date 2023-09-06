@@ -64,28 +64,28 @@ const char* Intern::InvalidFormNameException::what(void) const throw()
 
 AForm	*Intern::makeForm(const std::string& formName, const std::string& target) const
 {
-	AForm	*result;
+	AForm	*Result;
+	int		i;
 
 	t_form	data[] = 
 	{
 		{ "presidential pardon", new PresidentialPardonForm(target) },
 		{ "robotomy request", new RobotomyRequestForm(target) },
 		{ "shrubbery creation", new ShrubberyCreationForm(target) },
-		{ "", NULL }
 	};
 
-	result = NULL;
-	for (int i = 0; data[i].form != NULL; i++)
+	Result = NULL;
+	for (i = 0; data[i].form != NULL; i++)
 	{
 		if (data[i].type == formName)
-			result = data[i].form;
+			Result = data[i].form;
 		else
 			delete data[i].form;
 	}
 
-	if (result == NULL)
+	if (Result == NULL || i > 2)
 		throw Intern::InvalidFormNameException();
 	else
 		std::cout << "Intern creates " << formName << std::endl;
-	return result;
+	return Result;
 }
