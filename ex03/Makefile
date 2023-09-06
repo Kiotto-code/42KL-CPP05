@@ -6,13 +6,13 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 17:19:00 by yichan            #+#    #+#              #
-#    Updated: 2023/09/06 21:41:52 by yichan           ###   ########.fr        #
+#    Updated: 2023/09/07 00:57:21 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= a.out
 CXX				= c++
-CXXFLAGS		= -Wall -Werror -Wextra -g3 -std=c++98 #-fsanitize=address
+CXXFLAGS		= -Wall -Werror -Wextra -g3 -std=c++98 -fsanitize=address
 INCLUDES		= ./includes
 SRCS_PATH		= ./srcs
 OBJS_PATH		= ./objs
@@ -30,16 +30,16 @@ RED			=	\033[38;5;160m
 
 all						: $(NAME)
 $(NAME)					: $(OBJS)
-#   $(MAKE) -c ./libft
+#   $(MAKE) -c ./libft	
 						  $(CXX) $(CXXFLAGS) -I$(INCLUDES) $^ -o $@
 						  @echo "The program name is $(RED)./$(NAME) $(RESET)"
 
-$(OBJS_PATH)/%.o		: $(SRCS_PATH)/%.cpp $(INCLUDES) ./Makefile
-						  @mkdir -p $(@D)
-						  $(CXX) $(CXXFLAGS) -I$(INCLUDES) -c $< -o $@
+$(OBJS_PATH)/%.o		:	$(SRCS_PATH)/%.cpp $(INCLUDES) ./Makefile | $(OBJS_PATH)
+# mkdir -p $(OBJS_PATH)
+							$(CXX) $(CXXFLAGS) -I$(INCLUDES) -c $< -o $@
 
-# $(OBJ_PATH)				:
-# 							mkdir -p $(OBJ_PATH)
+$(OBJS_PATH)			:
+							mkdir -p $(OBJS_PATH)
 
 clean					:
 							rm -rf $(OBJS_PATH)
@@ -57,3 +57,34 @@ valgrind				:
 
 .PHONY					:	clean fclean re run all valgrind
 
+# NAME = a.out
+# CC = c++
+# CFLAGS = -Wall -Werror -Wextra -std=c++98
+
+# INCLUDE	= ./includes
+# SRCS_PATH	= ./srcs
+# OBJS_PATH	= ./objs
+
+# SRCS	= $(shell find $(SRCS_PATH) -name "*.cpp")
+# OBJS			= $(patsubst $(SRCS_PATH)/%.cpp, $(OBJS_PATH)/%.o, $(SRCS))
+
+# all: $(NAME)
+
+# $(NAME):	$(OBJS)
+# 			$(CC) $(CFLAGS) -I$(INCLUDE) $^ -o $@
+
+# $(OBJS_PATH)/%.o:	$(SRCS_PATH)/%.cpp | $(OBJS_PATH)
+# 					$(CC) $(CFLAGS) -c -I$(INCLUDE) $< -o $@
+
+# $(OBJS_PATH):
+# 				mkdir -p $(OBJS_PATH)
+
+# clean:
+# 		rm -rf $(OBJS_PATH)
+
+# fclean:	clean
+# 		rm -rf $(NAME)
+
+# re:		fclean all
+
+# .PHONY: all clean fclean re

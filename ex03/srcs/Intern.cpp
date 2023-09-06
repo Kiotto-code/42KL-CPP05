@@ -22,73 +22,81 @@ const char* Intern::InvalidFormNameException::what(void) const throw()
 	return ("FormName Given Was Not In the Record!");
 }
 
-// static AForm *	createPresidentialPardonForm(std::string const & target)
-// {
-// 	return (new PresidentialPardonForm(target));
-// }
-
-// static AForm *	createRobotomyRequestForm(std::string const & target)
-// {
-// 	return (new RobotomyRequestForm(target));
-// }
-
-// static AForm *	createShrubberyCreationForm(std::string const & target)
-// {
-// 	return (new ShrubberyCreationForm(target));
-// }
-
-
-// AForm*	Intern::makeForm(std::string const &formName, std::string const &target)
-// {
-// 	int i = 0;
-// 	AForm	(fcnPtr[3]) = {
-// 			// &PresidentialPardonForm(target),
-// 			// &RobotomyRequestForm(target),
-// 			// &ShrubberyCreaionForm(target),
-// 			&createPresidentialPardonForm,
-// 			&createRobotomyRequestForm,
-// 			&createShrubberyCreationForm
-// 	};
-// 	static std::string arr[3] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreaionForm"};
-// 	for (i = 0; i < 3; i++)
-// 	{
-// 		if (arr[i] == formName)
-// 			break ;
-// 	}
-// 	AForm * temp = (fcnPtr[i])(target);
-// 	if (i < 3)
-// 		return temp;
-// 	else
-// 		throw Intern::InvalidFormNameException();
-// }
-
-AForm	*Intern::makeForm(const std::string& formName, const std::string& target) const
+static AForm *	createPresidentialPardonForm(std::string const & target)
 {
-	AForm	*Result;
-	int		i;
+	return (new PresidentialPardonForm(target));
+}
 
-	t_pair	data[] = 
-	{
-		{ "presidential pardon", new PresidentialPardonForm(target) },
-		{ "robotomy request", new RobotomyRequestForm(target) },
-		{ "shrubbery creation", new ShrubberyCreationForm(target) },
-		{ "", NULL}
+static AForm *	createRobotomyRequestForm(std::string const & target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm *	createShrubberyCreationForm(std::string const & target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+
+AForm*	Intern::makeForm(std::string const &formName, std::string const &target) const
+{
+	int i = 0;
+	// typedef AForm *(*FT_PTR)( std::string const &);
+	// FT_PTR func_arr[] = {
+	typedef AForm *(*FT[])(std::string const &);
+
+	// AForm *(*func_arr[])( std::string const &) = {
+	FT  func_arr= {
+			// &PresidentialPardonForm(target),
+			// &RobotomyRequestForm(target),
+			// &ShrubberyCreaionForm(target),
+			&createPresidentialPardonForm,
+			&createRobotomyRequestForm,
+			&createShrubberyCreationForm
 	};
-
-	Result = NULL;
-	for (i = 0; data[i].form != NULL; i++)
+	static std::string arr[] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+	for (i = 0; i < 3; i++)
 	{
-		if (data[i].type == formName)
-			Result = data[i].form;
-		else
-			delete data[i].form;
+		if (arr[i] == formName)
+			break ;
 	}
-
-	if (Result == NULL || i > 4)
+	std::cout << "number :" << i << std::endl;
+	if (i < 3)
 	{
-		throw Intern::InvalidFormNameException();
+		AForm * temp = (func_arr[i])(target);
+		return temp;
 	}
 	else
-		std::cout << "Intern creates " << formName << std::endl;
-	return Result;
+		throw Intern::InvalidFormNameException();
 }
+
+// AForm	*Intern::makeForm(const std::string& formName, const std::string& target) const
+// {
+// 	AForm	*Result;
+// 	int		i;
+
+// 	t_pair	data[] = 
+// 	{
+// 		{ "presidential pardon", new PresidentialPardonForm(target) },
+// 		{ "robotomy request", new RobotomyRequestForm(target) },
+// 		{ "shrubbery creation", new ShrubberyCreationForm(target) },
+// 		{ "", NULL}
+// 	};
+
+// 	Result = NULL;
+// 	for (i = 0; data[i].form != NULL; i++)
+// 	{
+// 		if (data[i].type == formName)
+// 			Result = data[i].form;
+// 		else
+// 			delete data[i].form;
+// 	}
+
+// 	if (Result == NULL || i > 4)
+// 	{
+// 		throw Intern::InvalidFormNameException();
+// 	}
+// 	else
+// 		std::cout << "Intern creates " << formName << std::endl;
+// 	return Result;
+// }

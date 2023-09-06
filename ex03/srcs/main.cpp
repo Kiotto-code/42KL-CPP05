@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 23:37:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/06 21:42:24 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/07 00:04:18 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,6 @@ int	main(void)
 	testInternFormCreation(presidentialFormName, "Jesus");
 	testInternFormCreation("Bad Form Name", "Mr. X");
 	testInternFormCreation("", "");	
-	system("leaks -q a.out");
+	// system("leaks -q a.out");
 	return (0);
 }
