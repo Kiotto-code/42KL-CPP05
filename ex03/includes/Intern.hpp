@@ -11,11 +11,11 @@
 class	Intern
 {
 	private:
-		typedef struct	s_form
+		typedef struct	s_pair
 		{
 			std::string	type;
 			AForm		*form;
-		}				t_form;
+		}				t_pair;
 	public:
 		Intern( void );
 		~Intern( void );

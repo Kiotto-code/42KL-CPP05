@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 23:37:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/05 17:34:47 by yichan           ###   ########.fr       */
+/*   Updated: 2023/09/06 21:30:57 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,31 +17,16 @@
 
 int main()
 {
-	Bureaucrat		Odin("Odin", 1);
-	Bureaucrat		Thor("Thor", 40);
-	Bureaucrat		Loki("Loki", 150);
+	Bureaucrat		Batman("Batman", 1);
+	Bureaucrat		Flash("Flash", 40);
+	Bureaucrat		Superman("Superman", 150);
 	AForm			*form = NULL;
 
-	srand(time(NULL));
-	std::cout << "Let's execute an unsigned presidential pardon form" << std::endl;
-	try
-	{
-		form = new PresidentialPardonForm("28Z");
-		form->execute(Odin);
-		delete form;
-		form = NULL;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
-
-	std::cout << "\nLet's sign and execute a presidential pardon form" << std::endl;
+	std::cout << "\nUnsigned presidential pardon form" << std::endl;
 	try
 	{
 		form = new PresidentialPardonForm("28A");
-		form->beSigned(Odin);
-		form->execute(Odin);
+		form->execute(Batman);
 		delete form;
 		form = NULL;
 	}
@@ -50,19 +35,33 @@ int main()
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "\nLet's sign and execute robotomy request form with different people" << std::endl;
+	std::cout << "\nSign and execute a presidential pardon form" << std::endl;
+	try
+	{
+		form = new PresidentialPardonForm("28A");
+		form->beSigned(Batman);
+		form->execute(Batman);
+		delete form;
+		form = NULL;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+
+	std::cout << "\nSign and execute robotomy request form with different people" << std::endl;
 	try
 	{
 		form = new RobotomyRequestForm("28B");
-		Odin.signForm(*form);
+		Batman.signForm(*form);
 		std::cout << std::endl;
-		Thor.executeForm(*form);
-		Thor.executeForm(*form);
-		Thor.executeForm(*form);
-		Thor.executeForm(*form);
-		Thor.executeForm(*form);
-		Thor.executeForm(*form);
-		Thor.executeForm(*form);
+		Flash.executeForm(*form);
+		Flash.executeForm(*form);
+		Flash.executeForm(*form);
+		Flash.executeForm(*form);
+		Flash.executeForm(*form);
+		Flash.executeForm(*form);
+		Flash.executeForm(*form);
 		delete form;
 		form = NULL;
 	}
@@ -71,13 +70,13 @@ int main()
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
 
-	std::cout << "\nLet's execute shrubbery creation form with unauthorized bureaucrat" << std::endl;
+	std::cout << "\nUnauthorized bureaucrat" << std::endl;
 	try
 	{
 		form = new ShrubberyCreationForm("28C");
-		Odin.signForm(*form);
-		Thor.executeForm(*form);
-		Loki.executeForm(*form);
+		Batman.signForm(*form);
+		Flash.executeForm(*form);
+		Superman.executeForm(*form);
 		delete form;
 		form = NULL;
 	}

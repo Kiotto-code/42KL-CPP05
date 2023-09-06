@@ -67,11 +67,12 @@ AForm	*Intern::makeForm(const std::string& formName, const std::string& target) 
 	AForm	*Result;
 	int		i;
 
-	t_form	data[] = 
+	t_pair	data[] = 
 	{
 		{ "presidential pardon", new PresidentialPardonForm(target) },
 		{ "robotomy request", new RobotomyRequestForm(target) },
 		{ "shrubbery creation", new ShrubberyCreationForm(target) },
+		{ "", NULL}
 	};
 
 	Result = NULL;
@@ -83,8 +84,10 @@ AForm	*Intern::makeForm(const std::string& formName, const std::string& target) 
 			delete data[i].form;
 	}
 
-	if (Result == NULL || i > 2)
+	if (Result == NULL || i > 4)
+	{
 		throw Intern::InvalidFormNameException();
+	}
 	else
 		std::cout << "Intern creates " << formName << std::endl;
 	return Result;
