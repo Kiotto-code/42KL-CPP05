@@ -6,7 +6,7 @@
 #    By: yichan <yichan@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/23 17:19:00 by yichan            #+#    #+#              #
-#    Updated: 2023/09/07 01:15:26 by yichan           ###   ########.fr        #
+#    Updated: 2023/09/07 02:04:48 by yichan           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,12 @@ $(NAME)					: $(OBJS)
 						  $(CXX) $(CXXFLAGS) -I$(INCLUDES) $^ -o $@
 						  @echo "The program name is $(RED)./$(NAME) $(RESET)"
 
-$(OBJS_PATH)/%.o		: $(SRCS_PATH)/%.cpp $(INCLUDES) ./Makefile
-						  mkdir -p $(@D)
+$(OBJS_PATH)/%.o		: $(SRCS_PATH)/%.cpp $(INCLUDES) ./Makefile | $(OBJS_PATH)
+# mkdir -p $(@D)
 						  $(CXX) $(CXXFLAGS) -I$(INCLUDES) -c $< -o $@
+
+$(OBJS_PATH)			:
+							mkdir -p $(OBJS_PATH)
 
 clean					:
 							rm -rf $(OBJS_PATH)
