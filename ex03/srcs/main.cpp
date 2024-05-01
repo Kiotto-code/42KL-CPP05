@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 23:37:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/10/02 18:10:46 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/01 17:10:39 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,10 @@ int	main(void)
 
 	testInternFormCreation(shrubberyFormName, "Garden");
 	testInternFormCreation(robotomyFormName, "Unsuspecting Customer");
+	std::cin.get();
+	// printf("\e[1;1H\e[2J");
+
+	std::cout << "\e[1;1H\e[2J" << std::endl;
 	testInternFormCreation(presidentialFormName, "Jesus");
 	testInternFormCreation("Bad Form Name", "Mr. X");
 	testInternFormCreation("", "");	

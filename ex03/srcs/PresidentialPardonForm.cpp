@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 23:35:07 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/06 21:46:46 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/01 17:14:01 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	this->checkExecute(executor);
 	std::cout << "* loud drilling noise *" << std::endl;
-	// srand(time(0));
+	srand(time(0));
 	if (std::rand() % 2)
-		std::cout << this->_target << " has been robotomized." << std::endl;
+		std::cout << this->_target << RED" has been robotomized."RESET << std::endl;
 	else
 		std::cout << "Robotomy has failed." << std::endl;
 }
