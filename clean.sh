@@ -11,4 +11,4 @@
 
 # #!/usr/bin/bash
 
-find . \( -name ".DS_Store" -o -name "a.out" -o -name "*.dSYM" -o -name "*.gch" -o -name "*.obj" -o -name "*.o" -o -name "*.d" -o -name "*tempCodeRunnerFile" \) -exec rm {} \;
+find . \( -name ".DS_Store" -o -name "tempCodeRunnerFile" -o -name "a.out" -o -name "*.dSYM" -o -name "*.gch" -o -name "*.obj" -o -name "*.o" -o -name "*.d" -o -name "*tempCodeRunnerFile" \) -exec rm {} \;
