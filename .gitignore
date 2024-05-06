@@ -49,10 +49,12 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-cub3d
 .DS_Store
 libs/.DS_Store
 */.DS_Store
 .vscode/*
 .vscode/launch.json
+
+# extra
+tempCodeRunnerFile*
 *_shrubbery
