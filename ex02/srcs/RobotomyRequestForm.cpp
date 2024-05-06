@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 22:41:01 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/05 17:17:37 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/07 02:03:28 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ RobotomyRequestForm	&RobotomyRequestForm::operator = (const RobotomyRequestForm 
 void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
 	this->checkExecute(executor);
+	std::cout << MAGENTA << getDataType(executor) << " " << RESET << executor.getName() << " executed " << _target << std::endl;
 	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

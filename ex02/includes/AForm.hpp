@@ -58,4 +58,20 @@ class	AForm
 // std::ostream& operator<<(std::ostream &out, const AForm &AForm);
 std::ostream	&operator<<(std::ostream &out, const AForm &AForm);
 
+template <typename T>
+std::string		getDataType(const T &object)
+{
+	std::string denumbered;
+	std::string type = typeid(object).name();
+
+	size_t pos = type.find_first_not_of("0123456789");
+    if (pos != std::string::npos) {
+        // Return the substring before the first digit
+        denumbered = std::string(type.substr(pos));
+		return denumbered;
+    }
+    // If no digit found, return the original string
+    return "";
+}
+
 #endif

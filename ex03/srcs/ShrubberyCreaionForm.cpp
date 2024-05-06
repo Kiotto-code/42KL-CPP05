@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 23:35:07 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/05 17:17:52 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/07 02:03:36 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 	std::ofstream file;
 
 	this->checkExecute(executor);
+	std::cout << MAGENTA << getDataType(executor) << " " << RESET << executor.getName() << " executed " << _target << std::endl;
 	file.open(this->_target+"_shrubbery");
 
 	file << "MMMMMMMMWWWWWWWWWWXK0OkkkkO0XNWMMMMMMMMM" << std::endl;

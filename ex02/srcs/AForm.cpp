@@ -97,14 +97,3 @@ std::ostream &operator<< (std::ostream &os, const AForm &doc)
 		<< "; to execute: " << doc.getExecute_grade() << ")";
 	return (os);
 }
-
-template <typename T>
-std::string getDataType(T &object)
-{
-	std::string denumbered;
-	std::string type = typeid(object).name();
-	std::isstringstream ss(type);
-
-	
-
-}
