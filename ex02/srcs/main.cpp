@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 23:37:05 by yichan            #+#    #+#             */
-/*   Updated: 2023/09/06 21:30:57 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/06 16:20:20 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+
+static void cterm(void)
+{
+	std::cin.get();
+	std::cout << "\e[1;1H\e[2J";
+}
 
 int main()
 {
@@ -34,7 +40,7 @@ int main()
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-
+	cterm();
 	std::cout << "\nSign and execute a presidential pardon form" << std::endl;
 	try
 	{
@@ -48,8 +54,9 @@ int main()
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-
-	std::cout << "\nSign and execute robotomy request form with different people" << std::endl;
+	cterm();
+	std::cout << std::endl;
+	std::cout << "Sign and execute robotomy request form with different people" << std::endl;
 	try
 	{
 		form = new RobotomyRequestForm("28B");
@@ -57,11 +64,7 @@ int main()
 		std::cout << std::endl;
 		Flash.executeForm(*form);
 		Flash.executeForm(*form);
-		Flash.executeForm(*form);
-		Flash.executeForm(*form);
-		Flash.executeForm(*form);
-		Flash.executeForm(*form);
-		Flash.executeForm(*form);
+
 		delete form;
 		form = NULL;
 	}
@@ -69,8 +72,9 @@ int main()
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-
-	std::cout << "\nUnauthorized bureaucrat" << std::endl;
+	cterm();
+	std::cout << std::endl;
+	std::cout << "Unauthorized bureaucrat" << std::endl;
 	try
 	{
 		form = new ShrubberyCreationForm("28C");

@@ -72,17 +72,17 @@ void	AForm::checkExecute(Bureaucrat const &bureaucrat) const
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-	return "Grade Too High\n";
+	return "Grade Too High";
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-	return "Grade Too Low\n";
+	return "Grade Too Low";
 }
 
 const char* AForm::AlreadySignedException::what() const throw()
 {
-	return "Grade Signed\n";
+	return "Grade Signed";
 }
 const char* AForm::InvalidFormException::what() const throw()
 {
@@ -96,4 +96,15 @@ std::ostream &operator<< (std::ostream &os, const AForm &doc)
 		<< ";to sign: " << doc.getSign_grade()
 		<< "; to execute: " << doc.getExecute_grade() << ")";
 	return (os);
+}
+
+template <typename T>
+std::string getDataType(T &object)
+{
+	std::string denumbered;
+	std::string type = typeid(object).name();
+	std::isstringstream ss(type);
+
+	
+
 }

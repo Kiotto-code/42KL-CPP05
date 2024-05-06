@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 23:35:07 by yichan            #+#    #+#             */
-/*   Updated: 2024/05/01 17:13:38 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/06 16:47:55 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ PresidentialPardonForm	&PresidentialPardonForm::operator = (const PresidentialPa
 void	PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
 	this->checkExecute(executor);
+	std::cout << MAGENTA << decltype(executor).name() << " " << RESET << executor.getName() << " executed " << _target << std::endl;
 	std::cout << "* loud drilling noise *" << std::endl;
 	srand(time(0));
 	if (std::rand() % 2)

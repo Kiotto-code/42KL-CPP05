@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 23:37:05 by yichan            #+#    #+#             */
-/*   Updated: 2024/05/01 17:10:39 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/06 23:18:59 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@
 // }
 
 
+static void cterm(void)
+{
+	std::cin.get();
+	std::cout << "\e[1;1H\e[2J";
+}
+
 void	testInternFormCreation(std::string formName, std::string target)
 {
 	std::cout << std::endl << "---- Creating form \"" << formName
@@ -100,7 +106,9 @@ void	testInternFormCreation(std::string formName, std::string target)
 	try
 	{
 		form = lowlyIntern.makeForm(formName, target);
+		std::cout << GOLD"SIGNING FORM"RESET << std::endl;
 		bigBoss.signForm(*form);
+		std::cout << GOLD"EXCUTING FORM"RESET << std::endl;
 		bigBoss.executeForm(*form);
 		delete (form);
 	}
@@ -117,13 +125,13 @@ int	main(void)
 	std::string const	presidentialFormName = "presidential pardon";
 
 	testInternFormCreation(shrubberyFormName, "Garden");
+	cterm();
 	testInternFormCreation(robotomyFormName, "Unsuspecting Customer");
-	std::cin.get();
-	// printf("\e[1;1H\e[2J");
-
-	std::cout << "\e[1;1H\e[2J" << std::endl;
+	cterm();
 	testInternFormCreation(presidentialFormName, "Jesus");
+	cterm();
 	testInternFormCreation("Bad Form Name", "Mr. X");
+	cterm();
 	testInternFormCreation("", "");	
 	// system("leaks -q a.out");
 	return (0);

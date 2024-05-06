@@ -34,6 +34,12 @@
 // 	bob.signForm(form);
 // }
 
+static void cterm(void)
+{
+	std::cin.get();
+	std::cout << "\e[1;1H\e[2J";
+}
+
 int main()
 {
 	std::cout << "Let's create a form with grade to sign 0" << std::endl;
@@ -43,9 +49,9 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		std::cout << "Exception grade to sign: " << e.what() << std::endl;
 	}
-
+	cterm();
 	std::cout << "\nLet's create a form with grade to execute 0" << std::endl;
 	try
 	{
@@ -53,9 +59,9 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << "Exception: " << e.what() << std::endl;
+		std::cout << "Exception grade to execute: " << e.what() << std::endl;
 	}
-
+	cterm();
 	std::cout << "\nLet's create a form with grade to execute 151" << std::endl;
 	try
 	{
@@ -65,7 +71,7 @@ int main()
 	{
 		std::cout << "Exception: " << e.what() << std::endl;
 	}
-
+	cterm();
 	std::cout << "\nLet's create a form with grade to sign 151" << std::endl;
 	try
 	{
@@ -75,38 +81,40 @@ int main()
 	{
 		std::cout << "Exeption: " << e.what() << std::endl;
 	}
-
+	cterm();
 	std::cout << "\nLet's sign a form with appropriate bureaucrat\n" << std::endl;
 	try
 	{
 		Bureaucrat	Odin("Odin", 1);
 		Form		f("EB114", 150, 150);
 
-		std::cout << f << std::endl;
+		std::cout << GOLD << f << RESET << std::endl;
+
 		Odin.signForm(f);
-		std::cout << f << std::endl;
+
+		std::cout << GOLD << f << RESET << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	cterm();
 	std::cout << std::endl;
-
-
 	std::cout << "\nLet's sign a form with inappropriate bureaucrat\n" << std::endl;
 	try
 	{
 		Bureaucrat	Thor("Thor", 10);
 		Form		f("EB115", 1, 1);
 
-		std::cout << f << std::endl;
+		std::cout << GOLD << f << RESET << std::endl;
+
 		Thor.signForm(f);
-		std::cout << f << std::endl;
+
+		std::cout << GOLD << f << RESET << std::endl;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-
 	return 0;
 }

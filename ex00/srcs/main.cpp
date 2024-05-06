@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:28:10 by yichan            #+#    #+#             */
-/*   Updated: 2023/08/31 14:42:40 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/06 14:57:50 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,19 @@ int main(void)
 		batman.decrementGrade(50);
 		superman.incrementGrade(50);
 
+		{
+			Bureaucrat *test;
+			std::cout << GOLD"TEST THE INCREMENT"RESET << std::endl;
+			test = new Bureaucrat("test", 100);
+			test->decrementGrade(50);
+			test->incrementGrade(50);
+			delete test;
+		}
+
 		try
 		{
+			std::cout << GOLD"TEST THE EXCEED LOW BOUND"RESET << std::endl;
+			batman.getGrade();
 			batman.decrementGrade(60);
 		}
 		catch(Bureaucrat::GradeTooHighException & e)
@@ -65,6 +76,8 @@ int main(void)
 		
 		try
 		{
+			std::cout << GOLD"TEST THE EXCEED HIGH BOUND"RESET << std::endl;
+			superman.getGrade();
 			superman.incrementGrade(60);
 		}
 		catch(Bureaucrat::GradeTooHighException & e)
@@ -75,5 +88,6 @@ int main(void)
 		{
 			std::cerr << e.what() << '\n';
 		}
+		system("leaks -q a.out");
 	}
 }

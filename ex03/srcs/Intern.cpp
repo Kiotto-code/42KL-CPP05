@@ -60,10 +60,11 @@ AForm*	Intern::makeForm(std::string const &formName, std::string const &target) 
 		if (arr[i] == formName)
 			break ;
 	}
-	std::cout << "number :" << i << std::endl;
+	// std::cout << "number :" << i << std::endl;
 	if (i < 3)
 	{
 		AForm * temp = (func_arr[i])(target);
+		std::cout << MAGENTA"Intern creates " << temp->getName() << RESET << std::endl;
 		return temp;
 	}
 	else
