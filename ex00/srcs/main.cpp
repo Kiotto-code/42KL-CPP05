@@ -6,7 +6,7 @@
 /*   By: yichan <yichan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 20:28:10 by yichan            #+#    #+#             */
-/*   Updated: 2024/05/06 14:57:50 by yichan           ###   ########.fr       */
+/*   Updated: 2024/05/08 15:56:46 by yichan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int main(void)
 		try
 		{
 			std::cout << GOLD"TEST THE EXCEED LOW BOUND"RESET << std::endl;
-			batman.getGrade();
+			std::cout << batman.getGrade() << std::endl;
 			batman.decrementGrade(60);
 		}
 		catch(Bureaucrat::GradeTooHighException & e)
@@ -77,7 +77,7 @@ int main(void)
 		try
 		{
 			std::cout << GOLD"TEST THE EXCEED HIGH BOUND"RESET << std::endl;
-			superman.getGrade();
+			std::cout << superman.getGrade() << std::endl;
 			superman.incrementGrade(60);
 		}
 		catch(Bureaucrat::GradeTooHighException & e)
